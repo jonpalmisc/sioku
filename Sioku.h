@@ -38,7 +38,7 @@
 extern "C" {
 #endif
 
-const uint32_t siu_default_usb_timeout = 5;
+const uint32_t sioku_default_usb_timeout = 6;
 
 //===----------------------------------------------------------------------===//
 

@@ -271,8 +271,8 @@ SiokuTransferResult sioku_client_transfer(SiokuClient* self, uint8_t request_typ
 	r.wLength = OSSwapLittleToHostInt16(length);
 	r.wValue = OSSwapLittleToHostInt16(value);
 	r.wIndex = OSSwapLittleToHostInt16(index);
-	r.completionTimeout = siu_default_usb_timeout;
-	r.noDataTimeout = siu_default_usb_timeout;
+	r.completionTimeout = sioku_default_usb_timeout;
+	r.noDataTimeout = sioku_default_usb_timeout;
 
 	IOReturn error = (*self->device)->DeviceRequestTO(self->device, &r);
 
@@ -310,8 +310,8 @@ SiokuTransferResult sioku_client_transfer_async(SiokuClient* self,
 	r.wLength = OSSwapLittleToHostInt16(length);
 	r.wValue = OSSwapLittleToHostInt16(value);
 	r.wIndex = OSSwapLittleToHostInt16(index);
-	r.completionTimeout = siu_default_usb_timeout;
-	r.noDataTimeout = siu_default_usb_timeout;
+	r.completionTimeout = sioku_default_usb_timeout;
+	r.noDataTimeout = sioku_default_usb_timeout;
 
 	SiokuTransferResult result;
 	IOReturn error = (*self->device)->DeviceRequestAsyncTO(self->device, &r, transfer_async_callback, &result);
