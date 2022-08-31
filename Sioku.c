@@ -331,8 +331,7 @@ SiokuTransferResult sioku_client_transfer_async(SiokuClient* self,
 
 void sioku_client_close_device(SiokuClient* self)
 {
-	CFRunLoopRemoveSource(CFRunLoopGetCurrent(), self->event_source,
-	    kCFRunLoopDefaultMode);
+	CFRunLoopRemoveSource(CFRunLoopGetCurrent(), self->event_source, kCFRunLoopDefaultMode);
 	CFRelease(self->event_source);
 
 	(*self->device)->USBDeviceClose(self->device);
