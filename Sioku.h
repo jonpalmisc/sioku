@@ -91,8 +91,8 @@ void sioku_client_close_device(SiokuClient*);
 void sioku_client_close_interface(SiokuClient*);
 
 void sioku_client_disconnect(SiokuClient*);
-
-bool sioku_client_reset(SiokuClient* self);
+bool sioku_client_reconnect(SiokuClient*);
+bool sioku_client_reset(SiokuClient*);
 
 #ifdef __cplusplus
 }

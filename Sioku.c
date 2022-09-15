@@ -350,6 +350,11 @@ void sioku_client_disconnect(SiokuClient* self)
 	sioku_client_close_device(self);
 }
 
+bool sioku_client_reconnect(SiokuClient* self)
+{
+	return sioku_client_reset(self) && sioku_client_connect_default(self);
+}
+
 bool sioku_client_reset(SiokuClient* self)
 {
 	return (*self->device)->ResetDevice(self->device) == kIOReturnSuccess
