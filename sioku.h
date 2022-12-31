@@ -1,4 +1,4 @@
-//===-- Sioku.h - Simple IOKit-based USB library --------------------------===//
+//===-- sioku.h - Simple IOKit-based USB library --------------------------===//
 //
 // Copyright (c) 2022 Jon Palmisciano
 //
