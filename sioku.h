@@ -42,46 +42,42 @@ extern "C" {
 const uint32_t SIOKU_DEFAULT_USB_TIMEOUT = 6;
 
 typedef enum {
-  SiokuTransferStateOk,
-  SiokuTransferStateStall,
-  SiokuTransferStateError,
+    SiokuTransferStateOk,
+    SiokuTransferStateStall,
+    SiokuTransferStateError,
 } SiokuTransferState;
 
 SiokuTransferState sioku_transfer_state_from_iokit(IOReturn error);
 
 typedef struct {
-  SiokuTransferState state;
-  uint32_t length;
+    SiokuTransferState state;
+    uint32_t length;
 } SiokuTransferResult;
 
 SiokuTransferResult sioku_transfer_result(IOReturn error, uint32_t length);
 
 typedef struct {
-  uint16_t vendor;
-  uint16_t product;
+    uint16_t vendor;
+    uint16_t product;
 
-  IOUSBDeviceInterface320 **device;
-  IOUSBInterfaceInterface300 **interface;
-  CFRunLoopSourceRef event_source;
+    IOUSBDeviceInterface320 **device;
+    IOUSBInterfaceInterface300 **interface;
+    CFRunLoopSourceRef event_source;
 } SiokuClient;
 
 SiokuClient *sioku_client_create(uint16_t vendor, uint16_t product);
 
 bool sioku_open_device(SiokuClient *client, io_service_t service);
 bool sioku_open_interface(SiokuClient *client, uint8_t index,
-                          uint8_t alt_index);
+    uint8_t alt_index);
 
 bool sioku_connect(SiokuClient *client, uint8_t index, uint8_t alt_index);
 bool sioku_connect_default(SiokuClient *client);
 
 SiokuTransferResult sioku_transfer(SiokuClient *client, uint8_t request_type,
-                                   uint8_t request, uint16_t value,
-                                   uint16_t index, void *data, size_t length);
-SiokuTransferResult sioku_transfer_async(SiokuClient *client,
-                                         uint8_t request_type, uint8_t request,
-                                         uint16_t value, uint16_t index,
-                                         void *data, size_t length,
-                                         uint32_t timeout);
+    uint8_t request, uint16_t value, uint16_t index, void *data, size_t length);
+SiokuTransferResult sioku_transfer_async(SiokuClient *client, uint8_t request_type,
+    uint8_t request, uint16_t value, uint16_t index, void *data, size_t length, uint32_t timeout);
 
 void sioku_close_device(SiokuClient *client);
 void sioku_close_interface(SiokuClient *client);
